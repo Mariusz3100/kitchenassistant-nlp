@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class NerRestController {
 	
-	private NerParser parserBean;
+	private EngNerParser parserBean;
 	
 	
-    public NerParser getParserBean() {
+    public EngNerParser getParserBean() {
 		return parserBean;
 	}
 
 	@Autowired
-	public void setParserBean(NerParser parserBean) {
+	public void setParserBean(EngNerParser parserBean) {
 		this.parserBean = parserBean;
 	}
 
