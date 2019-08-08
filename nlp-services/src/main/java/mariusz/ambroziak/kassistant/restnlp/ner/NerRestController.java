@@ -3,6 +3,7 @@ package mariusz.ambroziak.kassistant.restnlp.ner;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class NerRestController {
 		return parserBean;
 	}
 
+    @Lazy
 	@Autowired
 	public void setParserBean(EngNerParser parserBean) {
 		this.parserBean = parserBean;
@@ -25,7 +27,8 @@ public class NerRestController {
 
 	@RequestMapping("/ner")
     public NerResults greeting(@RequestParam(value="param", defaultValue="empty") String param) throws IOException {
-        return parserBean.parse(param);
+		NerResults retValue= parserBean.parse(param);
+		return retValue;
     }
 
 }
